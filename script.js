@@ -45,7 +45,7 @@ wordsProgress.value = (currentWord.textContent * 100) / translationWords.length;
 
 let wordIndex = 0;
 let translationWord = translationWords[0];
-const ContainerExamCards = document.querySelector('#exam-cards');
+const сontainerExamCards = document.querySelector('#exam-cards');
 
 function makeCard() {
   translationWord = translationWords[wordIndex];
@@ -75,15 +75,15 @@ function makeExamCards() {
       const divWord = document.createElement('div')
       divWord.classList.add('card');
       divWord.textContent = value;
-      ContainerExamCards.append(divWord);
+      сontainerExamCards.append(divWord);
     }
   });
-  const examCards = ContainerExamCards.querySelectorAll('.card');
+  const examCards = сontainerExamCards.querySelectorAll('.card');
   const divWords = Array.from(examCards);
   const mixDivWords = mixWords(divWords);
 
   mixDivWords.forEach(div => {
-    ContainerExamCards.append(div);
+    сontainerExamCards.append(div);
   });
 }
 
@@ -194,7 +194,9 @@ document.addEventListener('click', function (event) {
   const card = event.target.closest('.card');
 
   if (card) {
-    if (firstClikcedCard === null) {
+    if (card.classList.contains('fade-out')) {
+      return;
+    } else if (!firstClikcedCard) {
       firstClikcedCard = card;
       firstClikcedCard.classList.add('correct');
     } else {
